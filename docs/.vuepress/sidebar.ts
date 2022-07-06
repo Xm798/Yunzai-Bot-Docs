@@ -9,6 +9,7 @@ export default sidebar({
       prefix: "deploy/",
       collapsable: true,
       children: [
+        { text: "部署说明", icon: "note", link: "README.md" },
         {
           text: "Linux 部署",
           icon: "linux",

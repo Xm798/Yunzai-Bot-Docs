@@ -12,7 +12,9 @@ export default hopeTheme({
   iconAssets: "iconfont",
   logo: "/logo.png",
   repo: "yoimiya-kokomi/Yunzai-Bot",
+  docsRepo: "https://github.com/Xm798/Yunzai-Bot-Docs",
   docsDir: "docs",
+  docsBranch: "master",
   // navbar
   navbar: navbar,
   // sidebar

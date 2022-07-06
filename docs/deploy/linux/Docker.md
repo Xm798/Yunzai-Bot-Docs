@@ -4,21 +4,9 @@ icon: structure
 order: 1
 ---
 
-## 为什么选择 docker ？
-
-- **开箱即用**的云崽机器人，近乎一键安装，无需考虑 redis 和 nodejs 环境安装和依赖安装、项目更新等问题
-- **不会破坏主机环境**，跑路时仅需删除 docker 容器即可
-- 毋庸担心本项目环境与本机其他项目所需要的环境相互干扰的问题
-- 可在任意支持 docker 的 **amd64 架构或 arm64 架构**的操作系统（包括Linux、Windows、MacOS等）上轻松运行
-- 结合 docker 部署脚本，可以交互式**配置喵喵插件和Python插件**，免除手动安装插件、配置环境和编译 ffmpeg 的烦恼
-- 所有用户数据均已映射到主机，**方便备份和迁移**
-- 每次重启容器即可完成对云崽本体和喵喵插件、Python 插件（若存在）的更新，方便快捷
-- 可配合 [portainer](https://www.portainer.io/) 进行图形化管理
-- 可通过创建多个 service 轻松实现**多开**
-
 ## 镜像版本
 
-目前，docker 镜像有两个版本，分别是**仅有云崽的精简版**与**附带 Python 和 ffmpeg 的扩展版**。
+目前，docker 镜像有两个版本，分别是 **仅有云崽的精简版** 与**附带 Python 和 ffmpeg 的扩展版**。
 
 ::: tip
 
@@ -28,25 +16,21 @@ order: 1
 
 :::
 
-::: code-tabs#markdown
+::: tabs
 
 @tab 扩展版
 
-```markdown
-华为云: swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:plus
-DockerHub: sirly/yunzai-bot:plus
-```
+- **华为云**: `swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:plus`
+- **DockerHub**: `sirly/yunzai-bot:plus`
 
 @tab 精简版
 
-```markdown
-华为云: swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:latest
-DockerHub: sirly/yunzai-bot:latest
-```
+- **华为云**: `swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:latest`
+- **DockerHub**: `sirly/yunzai-bot:latest`
+
 :::
 
 ## 安装 Docker
-
 
 ### 使用一键脚本安装（荐）
 
@@ -89,10 +73,10 @@ bash <(curl -sSL http://mtw.so/638Klr)
 
     ```js
     redis: {
-        host: "redis", //redis地址
-        port: 6379,        //redis端口
-        password: "",      //redis密码，没有密码可以为空
-        db: 0,             //redis数据库 
+        host: "redis", //redis 地址
+        port: 6379,        //redis 端口
+        password: "",      //redis 密码，没有密码可以为空
+        db: 0,             //redis 数据库 
       },
     ```
 
@@ -108,7 +92,7 @@ bash <(curl -sSL http://mtw.so/638Klr)
 
 首次运行如果 QQ 登录需要验证，则：
 
-```
+```bash
 # 启动容器
 docker-compose up -d
 
@@ -128,19 +112,19 @@ docker-compose restart
 
 ### 后台运行
 
-```
+```bash
 docker-compose up -d
 ```
 
 ### 前台运行
 
-```
+```bash
 docker-compose up
 ```
 
 ### 停止运行
 
-```
+```bash
 docker-compose down
 ```
 
@@ -148,12 +132,12 @@ docker-compose down
 
 重启时会自动拉取最新项目并更新相关依赖
 
-```
+```bash
 docker-compose restart
 ```
 
-### 查看最后的100行日志并持续输出日志
+### 查看最后的 100 行日志并持续输出日志
 
-```
+```bash
 docker-compose logs -f --tail=100
 ```
