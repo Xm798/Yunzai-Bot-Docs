@@ -1,0 +1,19 @@
+node_modules
+# Node modules
+node_modules/
+
+# Vuepress Cache
+.cache/
+# Vuepress Temp
+.temp/
+# Vuepress Output
+dist/
+
+# VS Code Config file
+.vscode/
+
+# macOS
+.DS_Store
+
+# VSCode settings
+.vscode/settings.json

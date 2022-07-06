@@ -1,0 +1,36 @@
+@use "sass:color";
+@use "sass:list";
+
+.home.project {
+  .hero {
+    text-align: center;
+    margin: 7% auto 7% auto;
+
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 280px;
+      margin: 0;
+    }
+
+    h1,
+    .description,
+    .action {
+      margin: 1.8rem auto;
+    }
+
+    h1 {
+      font-size: 3.6rem;
+      font-family: var(--font-family-lxgw);
+      font-weight: bold;
+    }
+
+    .description {
+      max-width: 35rem;
+      color: var(--text-color-bright);
+      font-size: 1.6rem;
+      font-family: var(--font-family-lxgw);
+      line-height: 1.3;
+    }
+  }
+}
