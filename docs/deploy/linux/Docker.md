@@ -6,7 +6,7 @@ order: 1
 
 ## 镜像版本
 
-目前，docker 镜像有两个版本，分别是 **仅有云崽的精简版** 与**附带 Python 和 ffmpeg 的扩展版**。
+目前，docker 镜像有两个版本，分别是 **仅有云崽的精简版** 与 **附带 Python 和 ffmpeg 的扩展版**。
 
 ::: tip
 
@@ -90,54 +90,70 @@ bash <(curl -sSL http://mtw.so/638Klr)
 
 ### 首次运行
 
-首次运行如果 QQ 登录需要验证，则：
+首次运行如果 QQ 登录需要验证或者扫码登录，请按以下步骤进行操作。
 
-```bash
-# 启动容器
-docker-compose up -d
+1. 启动容器
 
-# 启动完成后进入 yunzai 的容器，容器名字通过 docker ps -a 查看
-docker exec -it yunzai-bot /bin/sh
+    在工作目录内运行命令，拉起容器。
 
-# -------------------------
-# 在容器内部运行项目，进行登录验证
-node app
+    ```bash
+    docker-compose up -d
+    ```
 
-# -------------------------
-# 验证完成后，按快捷键 Ctrl+D 退出容器，然后重启容器
-docker-compose restart
-```
+2. 进入容器
+
+    启动完成后进入 yunzai 的容器，默认容器名为 yunzai-bot，若修改后需要修改为对应的容器名。
+
+    ```bash
+    docker exec -it yunzai-bot /bin/sh
+    ```
+
+3. 在容器内部进行登录验证或扫码登录
+
+    ```bash
+    node app
+    ```
+
+4. 完成验证，重启容器
+
+    验证完成后，按快捷键 Ctrl+D 退出容器，然后重启容器
+
+    ```bash
+    docker-compose restart
+    ```
 
 ## 常用命令
 
-### 后台运行
+- **后台运行**
 
-```bash
-docker-compose up -d
-```
+    ```bash
+    docker-compose up -d
+    ```
 
-### 前台运行
+- **前台运行**
 
-```bash
-docker-compose up
-```
+    ```bash
+    docker-compose up
+    ```
 
-### 停止运行
+- **停止运行**
 
-```bash
-docker-compose down
-```
+    ```bash
+    docker-compose down
+    ```
 
-### 重启/更新
+- **重启/更新**
 
-重启时会自动拉取最新项目并更新相关依赖
+    重启时会自动拉取最新项目并更新相关依赖
 
-```bash
-docker-compose restart
-```
+    ```bash
+    docker-compose restart
+    ```
 
-### 查看最后的 100 行日志并持续输出日志
+- 查看日志
 
-```bash
-docker-compose logs -f --tail=100
-```
+    查看最后的 100 行日志并持续输出日志
+
+    ```bash
+    docker-compose logs -f --tail=100
+    ```

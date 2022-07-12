@@ -12,6 +12,18 @@ index: true
 
 :::
 
+## 目录
+
+### Linux
+
+- [Docker 部署](linux/docker.md)
+- [本地手动部署](linux/local.md)
+
+### Windows
+
+- [Docker 部署](windows/docker.md)
+- [本地手动部署](windows/local.md)
+
 ## 为什么选择 docker？
 
 - **开箱即用**的云崽机器人，近乎一键安装，无需考虑 redis 和 nodejs 环境安装和依赖安装、项目更新等问题
