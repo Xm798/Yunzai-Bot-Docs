@@ -24,6 +24,10 @@ index: true
 - [Docker 部署](windows/docker.md)
 - [本地手动部署](windows/local.md)
 
+### Android
+
+- [安卓手机部署](android/README.md)
+
 ## 为什么选择 docker？
 
 - **开箱即用**的云崽机器人，近乎一键安装，无需考虑 redis 和 nodejs 环境安装和依赖安装、项目更新等问题

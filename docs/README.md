@@ -33,3 +33,10 @@ features:
 copyright: false
 footer: MIT Licensed | Copyright © 2021-present Yunzai-Bot
 ---
+
+---
+
+::: tip 贡献说明
+
+文档正在建设中，若要帮助我们建设文档，请访问 Github 存储库 [Xm798/Yunzai-Bot-Docs](https://github.com/Xm798/Yunzai-Bot-Docs) 提交 PR，不胜感激。
+:::

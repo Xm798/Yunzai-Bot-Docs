@@ -19,7 +19,8 @@ export default hopeTheme({
   navbar: navbar,
   // sidebar
   sidebar: sidebar,
-  displayFooter: false,
+  footer: 'MIT Licensed | Copyright © 2021-present Yunzai-Bot | <a href="https://github.com/Xm798/Yunzai-Bot-Docs" target="_blank">文档地址</a>',
+  displayFooter: true,
   pageInfo: ["Date", "Word", "PageView"],
   plugins: {
     comment: {
