@@ -22,6 +22,7 @@ export default sidebar({
           prefix: "windows/",
           children: "structure",
         },
+        { text: "Android 部署", icon: "android", link: "android/README.md" },
       ],
     },
     { text: "配置", icon: "config", link: "/config/" },
