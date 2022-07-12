@@ -92,7 +92,7 @@ bash <(curl -sSL http://mtw.so/638Klr)
 
 首次运行如果 QQ 登录需要验证或者扫码登录，请按以下步骤进行操作。
 
-1. 启动容器
+1. **启动容器**
 
     在工作目录内运行命令，拉起容器。
 
@@ -100,7 +100,7 @@ bash <(curl -sSL http://mtw.so/638Klr)
     docker-compose up -d
     ```
 
-2. 进入容器
+2. **进入容器**
 
     启动完成后进入 yunzai 的容器，默认容器名为 yunzai-bot，若修改后需要修改为对应的容器名。
 
@@ -108,13 +108,13 @@ bash <(curl -sSL http://mtw.so/638Klr)
     docker exec -it yunzai-bot /bin/sh
     ```
 
-3. 在容器内部进行登录验证或扫码登录
+3. **在容器内部进行登录验证或扫码登录**
 
     ```bash
     node app
     ```
 
-4. 完成验证，重启容器
+4. **完成验证，重启容器**
 
     验证完成后，按快捷键 Ctrl+D 退出容器，然后重启容器
 
