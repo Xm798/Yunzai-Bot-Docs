@@ -82,7 +82,7 @@ order: 1
 
 2. **安装插件**
 
-    ::: tips
+    ::: tip
 
     使用辅助部署脚本，可选择自动安装 Miao-Plugin 和 python-plugin，若安装了 python-plugin 会自动加载 xiaoyao-cvs-plugin。
 
