@@ -15,6 +15,37 @@ echo -e "${yellow}
 ===========================================================${plain}
 "
 
+function install_plugin() {
+    # $1 插件名称 $2 插件目录名 $3 插件仓库地址
+    echo -e ${blue}
+    read -e -r -p "是否安装 $1 ($2)? [Y/n] " input
+    echo -e ${plain}
+    case $input in
+    [yY][eE][sS] | [yY])
+        echo -e "安装位置：./yunzai/plugins/$2"
+
+        if [ ! -d ./yunzai/plugins/$2 ]; then
+            set +e
+            git clone $3 ./yunzai/plugins/$2
+            if [ "$?" -ne "0" ]; then
+                echo -e "${red}$1 安装失败！\n"
+            else
+                echo -e "${green}$1 安装成功！\n"
+            fi
+            set -e
+        else
+            echo -e "${red}$1 文件夹已存在！\n"
+        fi
+        ;;
+    [nN][oO] | [nN])
+        echo -e "${plain}跳过 $1 安装...\n"
+        ;;
+    *)
+        echo -e "${plain}跳过 $1 安装...\n"
+        ;;
+    esac
+}
+
 echo -e "将在当前目录下创建 yunzai-bot 文件夹并在其中完成后续工作..."
 echo -e ${blue}
 read -e -r -p "是否继续? [Y/n]" input
@@ -47,12 +78,14 @@ if [[ -z "${CN}" ]]; then
     GITHUB_RAW_URL="https://raw.githubusercontent.com/Xm798/Yunzai-Bot-Docs/master"
     YUNZAI_RAW_URL="https://raw.githubusercontent.com/yoimiya-kokomi/Yunzai-Bot/master"
     MIAO_PLUGIN_REPO="https://github.com/yoimiya-kokomi/miao-plugin.git"
-    PYPLUGIN_REPO="https://gitee.com/realhuhu/py-plugin.git"
+    CVS_PLUGIN_REPO="https://github.com/Ctrlcvs/xiaoyao-cvs-plugin.git"
+    PYPLUGIN_REPO="https://github.com/realhuhu/py-plugin.git"
     DOCKER_IMG_BASE="sirly/yunzai-bot"
 else
     GITHUB_RAW_URL="https://jihulab.com/Xm798/Yunzai-Bot-Docs/-/raw/master"
     YUNZAI_RAW_URL="https://gitee.com/yoimiya-kokomi/Yunzai-Bot/raw/master"
     MIAO_PLUGIN_REPO="https://gitee.com/yoimiya-kokomi/miao-plugin.git"
+    CVS_PLUGIN_REPO="https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git"
     PYPLUGIN_REPO="https://gitee.com/realhuhu/py-plugin.git"
     DOCKER_IMG_BASE="swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot"
 fi
@@ -77,21 +110,23 @@ done
 
 echo -e "${green}\n下载配置文件...${plain}"
 curl -sL ${YUNZAI_RAW_URL}/config/config_default.js -o ./yunzai/config.js
-sed -i '' 's|"127.0.0.1"|"redis"|g' ./yunzai/config.js
+
+sed -i "s|127.0.0.1|redis|g" ./yunzai/config.js
 
 echo -e "${green}\n下载docker-compose文件...${plain}"
-curl -sL ${GITHUB_RAW_URL}/scripts/docker-compose.yaml -o ./docker-compose.yaml
+curl -sL ${GITHUB_RAW_URL}/scripts/docker-compose_v2.yaml -o ./docker-compose.yaml
 
-echo -e "${blue}是否加载ffmpeg支持和Python环境？${plain}"
+echo -e "${blue}是否加载 ffmpeg 支持和 Python 环境？${plain}"
 
 select num in "[是]" "[否]"; do
     case "${num}" in
     "[是]")
-        DOCKER_IMG=$DOCKER_IMG_BASE":v2plus"
+        PYTHON=true
+        DOCKER_IMG=$DOCKER_IMG_BASE:v2plus
         break
         ;;
     "[否]")
-        DOCKER_IMG=$DOCKER_IMG_BASE":v2"
+        DOCKER_IMG=$DOCKER_IMG_BASE:v2
         break
         ;;
     *)
@@ -100,62 +135,13 @@ select num in "[是]" "[否]"; do
     esac
 done
 
-sed -i '' "s|sirly/yunzai-bot:v2|${DOCKER_IMG}|g" ./docker-compose.yaml
+sed -i "s|sirly/yunzai-bot:v2|${DOCKER_IMG}|g" ./docker-compose.yaml
 
-echo -e ${blue}
-read -e -r -p "是否安装喵喵插件(Miao-Plugin)？ [Y/n] " input
-echo -e ${plain}
-case $input in
-[yY][eE][sS] | [yY])
-    echo -e "安装位置：./yunzai/plugins/python-plugin"
-    if [ ! -d ./yunzai/plugins/miao-plugin ]; then
-        set +e
-        git clone $MIAO_PLUGIN_REPO ./yunzai/plugins/miao-plugin
-        if [ "$?" -ne "0" ]; then
-            echo -e "${red}喵喵插件安装失败！\n"
-        else
-            echo -e "${green}喵喵插件安装成功！\n"
-        fi
-        set -e
-    else
-        echo -e "${red}喵喵插件文件夹已存在！\n"
-    fi
-    ;;
-[nN][oO] | [nN])
-    echo -e "${plain}跳过喵喵插件安装...\n"
-    ;;
-*)
-    echo -e "${plain}跳过喵喵插件安装...\n"
-    ;;
-esac
+install_plugin "喵喵插件" "miao-plugin" $MIAO_PLUGIN_REPO
+install_plugin "图鉴插件" "xiaoyao-cvs-plugin" $CVS_PLUGIN_REPO
 
 if [[ ! -z "${PYTHON}" ]]; then
-    echo -e ${blue}
-    read -e -r -p "是否安装Python插件(py-plugin)？ [Y/n] " input
-    echo -e ${plain}
-    case $input in
-    [yY][eE][sS] | [yY])
-        echo -e "安装位置：./yunzai/plugins/py-plugin"
-        if [ ! -d ./yunzai/plugins/py-plugin ]; then
-            set +e
-            git clone $PYPLUGIN_REPO ./yunzai/plugins/py-plugin
-            if [ "$?" -ne "0" ]; then
-                echo -e "${red}py-plugin 安装失败！\n"
-            else
-                echo -e "${green}py-plugin 安装成功！\n"
-            fi
-            set -e
-        else
-            echo -e "${red}py-plugin 文件夹已存在！\n"
-        fi
-        ;;
-    [nN][oO] | [nN])
-        echo -e "${plain}跳过 py-plugin 安装...\n"
-        ;;
-    *)
-        echo -e "${plain}跳过 py-plugin 安装...\n"
-        ;;
-    esac
+    install_plugin "Python插件" "py-plugin" $PYPLUGIN_REPO
 fi
 
 echo -e "${green}------------------------------
