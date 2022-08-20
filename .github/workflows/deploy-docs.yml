@@ -3,11 +3,11 @@ name: 部署文档
 
 on:
   push:
-    branches:
-      - master
+    paths-ignore:
+      - 'scripts/**'
   pull_request:
-    branches:
-      - master
+    paths-ignore:
+      - 'scripts/**'
 
 jobs:
   deploy-gh-pages:

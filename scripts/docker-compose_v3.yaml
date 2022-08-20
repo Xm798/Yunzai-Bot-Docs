@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  yunzai-bot:
+    container_name: yunzai-bot
+    # build: ./docker # 使用 Dockerfile 本地构建
+    image: swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:v3       # 使用云端精简镜像
+    # image: swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:v3plus   # 使用扩展镜像，包含ffmpeg和python
+    # image: sirly/yunzai-bot:v3        # Docker Hub
+    # image: sirly/yunzai-bot:v3plus 
+    restart: always
+    volumes:
+      - ./yunzai/config/:/app/Yunzai-Bot/config/config/ # 配置文件
+      - ./yunzai/logs:/app/Yunzai-Bot/logs # 日志文件
+      - ./yunzai/data:/app/Yunzai-Bot/data # 数据文件
+      # 以下目录是插件目录，安装完插件后需要手动添加映射
+      # - ./yunzai/plugins/miao-plugin:/app/Yunzai-Bot/plugins/miao-plugin                  # 喵喵插件
+      # - ./yunzai/plugins/py-plugin:/app/Yunzai-Bot/plugins/py-plugin                      # 新py插件
+      # - ./yunzai/plugins/xiaoyao-cvs-plugin:/app/Yunzai-Bot/plugins/xiaoyao-cvs-plugin    # 图鉴插件
+    depends_on:
+      redis: { condition: service_healthy }
+
+  redis:
+    container_name: yunzai-redis
+    image: redis:alpine
+    restart: always
+    volumes:
+      - ./redis/data:/data
+      - ./redis/logs:/logs
+    healthcheck:
+      test: ["CMD", "redis-cli", "PING"]
+      start_period: 10s
+      interval: 5s
+      timeout: 1s

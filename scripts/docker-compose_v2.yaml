@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  yunzai-bot:
+    container_name: yunzai-bot
+    image: sirly/yunzai-bot:v2
+    restart: always
+    volumes:
+      - ./yunzai/config.js:/app/Yunzai-Bot/config/config.js              # config.js 配置文件，配置文件中 redis 地址填写 "redis"
+      - ./yunzai/logs:/app/Yunzai-Bot/logs                               # 日志文件
+      - ./yunzai/data:/app/Yunzai-Bot/data                               # 数据文件
+      - ./yunzai/global_img:/app/Yunzai-Bot/resources/global_img         # 全局表情目录
+      - ./yunzai/global_record:/app/Yunzai-Bot/resources/global_record   # 全局语音目录
+      - ./yunzai/lib/example:/app/Yunzai-Bot/lib/example                 # 自定义js插件目录
+      - ./yunzai/plugins:/app/Yunzai-Bot/plugins                         # 插件目录
+    depends_on:
+      redis: { condition: service_healthy }
+
+  redis:
+    container_name: yunzai-redis
+    image: "redis:alpine"
+    restart: always
+    volumes:
+      - ./redis/data:/data
+      - ./redis/logs:/logs
+    healthcheck:
+      test: ["CMD", "redis-cli", "PING"]
+      start_period: 10s
+      interval: 5s
+      timeout: 1s
