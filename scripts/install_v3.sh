@@ -95,9 +95,8 @@ echo -e "${green}\n创建所需文件夹...${plain}"
 [ -d yunzai-bot ] || mkdir yunzai-bot
 cd yunzai-bot
 
-folder_list="yunzai/logs yunzai/data yunzai/global_img
-    yunzai/global_record yunzai/lib/example yunzai/plugins yunzai/config
-    redis/data redis/logs"
+folder_list="yunzai/logs yunzai/data yunzai/plugins/example 
+    yunzai/config redis/data redis/logs"
 
 for folder in $folder_list; do
     if [ ! -d $folder ]; then
@@ -113,6 +112,10 @@ curl -sL ${YUNZAI_RAW_URL}/config/default_config/redis.yaml -o ./yunzai/config/r
 curl -sL ${YUNZAI_RAW_URL}/config/default_config/qq.yaml -o ./yunzai/config/qq.yaml
 curl -sL ${YUNZAI_RAW_URL}/config/default_config/group.yaml -o ./yunzai/config/group.yaml
 curl -sL ${YUNZAI_RAW_URL}/config/default_config/other.yaml -o ./yunzai/config/other.yaml
+
+curl -sL ${YUNZAI_RAW_URL}/config/plugins/example/%E4%B8%80%E8%A8%80.js -o ./yunzai/plugins/example/一言.js
+curl -sL ${YUNZAI_RAW_URL}/config/default_config/%E4%B8%BB%E5%8A%A8%E5%A4%8D%E8%AF%BB.js -o ./yunzai/plugins/example/主动复读.js
+curl -sL ${YUNZAI_RAW_URL}/config/default_config/%E8%BF%9B%E7%BE%A4%E9%80%80%E7%BE%A4%E9%80%9A%E7%9F%A5.js -o ./yunzai/plugins/example/进群退群通知.js
 
 sed -i 's|127.0.0.1|redis|g' ./yunzai/config/redis.yaml
 

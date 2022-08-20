@@ -8,9 +8,10 @@ services:
       - ./yunzai/config/:/app/Yunzai-Bot/config/config/ # 配置文件
       - ./yunzai/logs:/app/Yunzai-Bot/logs # 日志文件
       - ./yunzai/data:/app/Yunzai-Bot/data # 数据文件
+      - ./yunzai/plugins/example:/app/Yunzai-Bot/example # js 插件
       # 以下目录是插件目录，安装完插件后需要手动添加映射
-      - ./yunzai/plugins/miao-plugin:/app/Yunzai-Bot/plugins/miao-plugin                  # 喵喵插件
-      - ./yunzai/plugins/py-plugin:/app/Yunzai-Bot/plugins/py-plugin                      # 新py插件
+      # - ./yunzai/plugins/miao-plugin:/app/Yunzai-Bot/plugins/miao-plugin                  # 喵喵插件
+      # - ./yunzai/plugins/py-plugin:/app/Yunzai-Bot/plugins/py-plugin                      # 新py插件
       # - ./yunzai/plugins/xiaoyao-cvs-plugin:/app/Yunzai-Bot/plugins/xiaoyao-cvs-plugin    # 图鉴插件
     depends_on:
       redis: { condition: service_healthy }
