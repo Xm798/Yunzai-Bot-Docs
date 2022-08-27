@@ -33,11 +33,39 @@ export default sidebar({
       collapsable: true,
       children: [
         { text: "插件说明", icon: "note", link: "README.md" },
-        { text: "Docker部署插件安装", icon: "structure", link: "install-plugins-docker.md" },
-        { text: "本地部署插件安装", icon: "module", link: "install-plugins-local.md" },
+        {
+          text: "Docker部署插件安装",
+          icon: "structure",
+          link: "install-plugins-docker.md",
+        },
+        {
+          text: "本地部署插件安装",
+          icon: "module",
+          link: "install-plugins-local.md",
+        },
       ],
     },
     { text: "FAQ", icon: "question", link: "/faq/" },
+    {
+      text: "V2 版本",
+      icon: "cycle",
+      prefix: "v2/",
+      collapsable: true,
+      children: [
+        {
+          text: "部署",
+          icon: "install",
+          prefix: "deploy/",
+          children: "structure",
+        },
+        {
+          text: "插件",
+          icon: "plugin",
+          prefix: "plugin/",
+          children: "structure",
+        },
+      ],
+    },
     { text: "版权声明", icon: "copyright", link: "/copyright/" },
   ],
   "/deploy/": "structure",
