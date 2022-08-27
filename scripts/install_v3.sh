@@ -95,7 +95,7 @@ echo -e "${green}\n创建所需文件夹...${plain}"
 [ -d yunzai-bot ] || mkdir yunzai-bot
 cd yunzai-bot
 
-folder_list="yunzai/logs yunzai/data yunzai/plugins/example 
+folder_list="yunzai/logs yunzai/data yunzai/plugins/example yunzai/genshin_config
     yunzai/config redis/data redis/logs"
 
 for folder in $folder_list; do
