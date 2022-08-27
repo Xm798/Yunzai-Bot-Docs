@@ -4,7 +4,7 @@ icon: stack
 order: 2
 ---
 
-参考 [原神机器人Yunzai-Bot Windows 搭建教程 - 哔哩哔哩](https://www.bilibili.com/read/cv15119056)。
+参考 [本地 Windows 系统下安装 Yunzai-Bot](https://github.com/kirigirisan/Windows-Install-Yunzai-Bot)。
 
 ::: tip
 
@@ -12,21 +12,19 @@ order: 2
 
 :::
 
+# **安装 Yunzai-Bot**
 
+## **一、安装 nodejs**
 
-# **安装Yunzai-Bot**
-
-## **一、安装nodejs**
-
-版本必须在14及以上，[点我下载](http://nodejs.cn/download )  一路next安装
+版本必须在 14 及以上，[点我下载](http://nodejs.cn/download )  一路 next 安装
 
 ![](./assets/nodejs_download.png)
 
 ------
 
-## **二、安装启动redis**
+## **二、安装启动 redis**
 
-下载地址： https://wwa.lanzoui.com/inuUQi6v3ad
+下载地址： <https://wwa.lanzoui.com/inuUQi6v3ad>
 
 解压后双击`redis-server.exe`，成功运行后**窗口别关**，保持运行就行
 
@@ -36,15 +34,15 @@ order: 2
 >
 > **！！！！！！！！！！！！！！！！！！！！！！**
 >
-> 方法如下：https://jingyan.baidu.com/article/22a299b53ff3b7df18376a1f.html
+> 方法如下：<https://jingyan.baidu.com/article/22a299b53ff3b7df18376a1f.html>
 
-然后在Redis目录下建一个名称是start.txt文本，在新建的start.txt文件中加入下面一句话
+然后在 Redis 目录下建一个名称是 start.txt 文本，在新建的 start.txt 文件中加入下面一句话
 
 `redis-server.exe redis.windows.conf`
 
 接着将文件名`start.txt`格式改成`start.bat`就行了
 
-双击打开start.bat就可以了
+双击打开 start.bat 就可以了
 
 此方法摘自教程评论区
 
@@ -54,18 +52,18 @@ order: 2
 
 ## **三、克隆代码并运行**
 
-### 安装git
+### 安装 git
 
- 下载地址： https://wwp.lanzoub.com/iK0VE094y7uf
+ 下载地址： <https://wwp.lanzoub.com/iK0VE094y7uf>
 
 - 密码:klee
-- 选择你要安装的目录，空白处右键，Git Bash Here 
+- 选择你要安装的目录，空白处右键，Git Bash Here
 
-​                 ![img](./assets/git_bash_here.png)        
+​                 ![img](./assets/git_bash_here.png)
 
 ### 克隆代码
 
-**请确保输出与图中相似且没有报错error再进行下一步**
+**请确保输出与图中相似且没有报错 error 再进行下一步**
 
 ```
 git clone --depth=1 -b main https://gitee.com/Le-niao/Yunzai-Bot.git
@@ -81,7 +79,7 @@ cd Yunzai-Bot
 
 ![cd](./assets/cd.png)
 
-### 安装pnpm
+### 安装 pnpm
 
 ```
 npm install pnpm -g
@@ -95,15 +93,15 @@ npm install pnpm -g
 pnpm install -P
 ```
 
-::: details 报错ELIFECYCLE  Command failed with exit code 1.
+::: details 报错 ELIFECYCLE  Command failed with exit code 1.
 
-> 报错：` ELIFECYCLE  Command failed with exit code 1.`
+> 报错：`ELIFECYCLE  Command failed with exit code 1.`
 >
 > ![pnpm_failed](./assets/pnpm_failed.png)
 >
-> 解决办法：使用cnpm安装
+> 解决办法：使用 cnpm 安装
 >
-> 先安装cnpm
+> 先安装 cnpm
 >
 > ```
 > npm install -g cnpm --registry=https://registry.npmmirror.com
@@ -131,15 +129,15 @@ node app
 
 扫码登陆最快但要求在同一网络环境，并且容易掉线
 
-账号密码登陆需抓取ticket，乐佬有给app，操作也不是很复杂
+账号密码登陆需抓取 ticket，乐佬有给 app，操作也不是很复杂
 
 登陆端口**不选**安卓手机，这样的话方便自己用手机上号检查情况
 
-* 1、**如何在网页端获取ticket**
+- 1、**如何在网页端获取 ticket**
 
-乐佬给了一个好用的app，我这里就只进行简单的文字描述了
+乐佬给了一个好用的 app，我这里就只进行简单的文字描述了
 
->打开该网站，按下f12
+>打开该网站，按下 f12
 >
 >点击**network**（中文是**网络**），如果没有就点击旁边的 **>>>**
 >
@@ -147,13 +145,13 @@ node app
 >
 >点击右边的文件，然后点击**preview**（中文是**预览**）
 >
->复制ticket冒号后**引号里的**全部内容粘贴到原来的git窗口
+>复制 ticket 冒号后**引号里的**全部内容粘贴到原来的 git 窗口
 >
 >然后回车
 
 若要登陆保护验证，按照步骤走就行
 
-* 2、**[安全提醒]当前登录存在安全风险，请使用常用设备或通过手机号登录。**
+- 2、**[安全提醒] 当前登录存在安全风险，请使用常用设备或通过手机号登录。**
 
 ![fk](./assets/fk.png)
 
@@ -165,9 +163,9 @@ node app
 
 ### 如何再次开启机器人
 
-1、打开redis
+1、打开 redis
 
-2、在云崽路径下git bash here
+2、在云崽路径下 git bash here
 
 ![remake](./assets/remake.png)
 
@@ -178,8 +176,6 @@ node app
 ```
 
 ---
-
-
 
 ## 四、插件安装
 
@@ -197,7 +193,7 @@ node app
 git clone https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin/
 ```
 
-安装依赖指令二选一（pnpm失败了就用cnpm，安装pnpm和cnpm的指令在上面）
+安装依赖指令二选一（pnpm 失败了就用 cnpm，安装 pnpm 和 cnpm 的指令在上面）
 
 ::: code-tabs#shell
 
@@ -221,29 +217,29 @@ cnpm install image-size --save
 
 **#喵喵帮助**可以编辑，使用以下网站
 
-https://miao.seutools.com/ （虽然写着功能无法使用但其实是可以使用的）
+<https://miao.seutools.com/> （虽然写着功能无法使用但其实是可以使用的）
 
 选择**使用默认配置**
 
 配置完之后下载**help-list.js**和**icon.png**两个文件
 
-放入Yunzai-Bot\plugins\miao-plugin\resources\help\文件夹下
+放入 Yunzai-Bot\plugins\miao-plugin\resources\help\文件夹下
 
 选择替换目标文件
 
 > 若想替换掉背景，使用**同名文件**替换掉
 >
-> 在Yunzai-Bot\plugins\miao-plugin\resources\common\theme\文件夹的两个文件
+> 在 Yunzai-Bot\plugins\miao-plugin\resources\common\theme\文件夹的两个文件
 >
-> (一个是bg-01.jpg一个是main-01.png**后缀名**也要和原来保持一致)
+> (一个是 bg-01.jpg 一个是 main-01.png**后缀名**也要和原来保持一致)
 >
-> 若只想用一张图片当做背景图，删掉main-01.png即可
+> 若只想用一张图片当做背景图，删掉 main-01.png 即可
 >
 > 可以在#**喵喵设置**里面修改渲染精度≈调整图片大小
 
-可以#**喵喵设置帮助开启**将喵喵设置设置为默认帮助	
+可以#**喵喵设置帮助开启**将喵喵设置设置为默认帮助 
 
-更多可修改的内容比如颜色字体不透明度在index.css文件里，可自行探索
+更多可修改的内容比如颜色字体不透明度在 index.css 文件里，可自行探索
 
 示例：
 
@@ -259,7 +255,7 @@ https://miao.seutools.com/ （虽然写着功能无法使用但其实是可以�
 git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin/
 ```
 
-安装依赖指令二选一（pnpm失败了就用cnpm，安装pnpm和cnpm的指令在上面）
+安装依赖指令二选一（pnpm 失败了就用 cnpm，安装 pnpm 和 cnpm 的指令在上面）
 
 ::: code-tabs#shell
 
@@ -285,13 +281,11 @@ cnpm install promise-retry --save
 
 - 依次发送
 
-**#图鉴更新 	 #图鉴设置体力开启**
+**#图鉴更新   #图鉴设置体力开启**
 
-- 如果想戳一戳返回体力背景图，请依次发送（v3暂未拥有戳一戳功能2022.8.24）
+- 如果想戳一戳返回体力背景图，请依次发送（v3 暂未拥有戳一戳功能 2022.8.24）
 
 **#喵喵设置戳一戳关闭     #图鉴设置戳一戳开启**
-
-
 
 ### 其他插件
 
@@ -301,18 +295,18 @@ cnpm install promise-retry --save
 
 **自行按需选择：**
 
-闲心插件（v3） ：https://gitee.com/xianxincoder/xianxin-plugin
+闲心插件（v3） ：<https://gitee.com/xianxincoder/xianxin-plugin>
 
-卡池自定义（v3） ：https://gitee.com/Nwflower/flower-plugin
+卡池自定义（v3） ：<https://gitee.com/Nwflower/flower-plugin>
 
-小雪插件（v3） ：https://gitee.com/XueWerY/xiaoxue-plugin
+小雪插件（v3） ：<https://gitee.com/XueWerY/xiaoxue-plugin>
 
-碎月plugin（v3）：https://gitee.com/Acceleratorsky/suiyue
+碎月 plugin（v3）：<https://gitee.com/Acceleratorsky/suiyue>
 
-宵鸟（python）插件（v2&v3）：https://gitee.com/realhuhu/py-plugin
+宵鸟（python）插件（v2&v3）：<https://gitee.com/realhuhu/py-plugin>
 
-谁是卧底（v3）：https://gitee.com/Saury-loser/Saury
+谁是卧底（v3）：<https://gitee.com/Saury-loser/Saury>
 
-插件索引：https://gitee.com/Hikari666/Yunzai-Bot-plugins-index
+插件索引：<https://gitee.com/Hikari666/Yunzai-Bot-plugins-index>
 
 [私货](https://github.com/70loKirin/ATRI-plugin)

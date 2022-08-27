@@ -27,7 +27,7 @@ order: 1
 
 ::: info
 
-请参阅仓库 [云崽QQ机器人插件索引](https://github.com/HiArcadia/Yunzai-Bot-plugins-index)。
+请参阅仓库 [云崽QQ机器人插件索引](https://gitee.com/Hikari666/Yunzai-Bot-plugins-index)。
 
 :::
 
@@ -39,23 +39,13 @@ order: 1
 
 Miao-Plugin 是一个 Yunzai-Bot 的升级插件，提供包括角色查询等升级功能。
 
-::: tip
-
-目前该插件作者为云崽主要维护者。
-
-:::
-
->　一些实验性的新功能因功能可能不稳定，或者Yunzai-Bot存在类似功能，会在Miao-Plugin以插件形式提供，可按需选用。
->
->　部分非重复功能会在逐步稳定之后会合并入Yunzai-Bot。
->
 >　具体功能可在安装插件后 通过 #喵喵帮助 进行查看。如需进行设置可通过 #喵喵设置 命令进行管理。
 
 **仓库地址：** [yoimiya-kokomi/miao-plugin: Miao-Plugin for Yunzai-Bot](https://github.com/yoimiya-kokomi/miao-plugin)
 
-#### Python 插件 python-plugin
+#### Python 插件 py-plugin
 
-python-plugin 为云崽提供 Python 插件扩展，如黄历、签到、求签、塔罗牌、找资源等功能。
+python-plugin 为云崽提供 Python 插件扩展。
 
 ::: tip
 
@@ -63,7 +53,7 @@ python-plugin 为云崽提供 Python 插件扩展，如黄历、签到、求签�
 
 :::
 
-**仓库地址：** [lcwf/python-plugin: Yunzai-Bot插件](https://github.com/lcwf/python-plugin)
+**仓库地址：** [realhuhu/py-plugin: Yunzai-Bot插件](https://gitee.com/realhuhu/py-plugin)
 
 #### xiaoyao-cvs-plugin
 

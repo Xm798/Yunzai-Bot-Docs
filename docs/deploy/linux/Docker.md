@@ -6,9 +6,7 @@ order: 1
 
 ## 镜像版本
 
-目前，docker 镜像有两个版本，分别是 **仅有云崽的精简版** 与 **附带 Python 和 ffmpeg 的扩展版**。
-
-::: tip
+目前，docker 镜像分为 **精简版** 和 **扩展版**，精简版仅有云崽本体（可选加载喵喵插件和图鉴插件），扩展版附带 ffmpeg 环境和 Python 环境（可选加载 Python 插件）。
 
 若需要运行 python 插件或语音相关插件，请使用扩展版镜像。
 
@@ -20,15 +18,17 @@ order: 1
 
 @tab 扩展版
 
-- **华为云**: `swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:plus`
-- **DockerHub**: `sirly/yunzai-bot:plus`
+- **华为云**: `swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:v3plus`
+- **DockerHub**: `sirly/yunzai-bot:v3plus`
 
 @tab 精简版
 
-- **华为云**: `swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:latest`
-- **DockerHub**: `sirly/yunzai-bot:latest`
+- **华为云**: `swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot:v3`
+- **DockerHub**: `sirly/yunzai-bot:v3`
 
 :::
+
+> 你可以在 [SirlyDreamer/Yunzai-Bot](https://github.com/SirlyDreamer/Yunzai-Bot/tree/DockerBuild_v3plus) 的不同分支中找到各对应版本的 Dockerfile。
 
 ## 安装 Docker
 
@@ -43,46 +43,11 @@ sudo sh get-docker.sh --mirror Aliyun
 
 ### 辅助脚本（荐）
 
-Linux 可使用一键辅助脚本创建所需文件夹并下载所需文件，并可选择是否安装喵喵插件和 Python 插件。
-
-::: code-tabs#shell
-
-@tab 国内机器
+Linux 可使用一键辅助脚本创建所需文件夹并下载所需文件，并可选择是否安装喵喵插件、图鉴插件和 Python 插件。
 
 ```bash
-bash <(curl -sSL http://mtw.so/5zOC9x)
+bash <(curl -sSL http://yunzai.org/install_v3)
 ```
-
-@tab 海外机器
-
-```bash
-bash <(curl -sSL http://mtw.so/638Klr)
-```
-
-:::
-
-### 手动准备
-
-::: details 操作步骤
-
-1. 新建一个工作目录，例如 `yunzai-bot`，用于存放运行项目的相关文件。
-
-2. 进入 `yunzai-bot`，下载 `docker-compose.yaml` 到文件夹中，根据需要更换镜像。
-
-3. 在工作目录 `yunzai-bot` 中新建文件夹 `yunzai`，下载 `config_default.js` 放于其中，重命名为 `config.js`，并修改配置文件的内容为你自己的配置。配置文件中的 `redis` 的 `host` 填写 `redis`，**不是** `127.0.0.1`。
-
-    ```js
-    redis: {
-        host: "redis", //redis 地址
-        port: 6379,        //redis 端口
-        password: "",      //redis 密码，没有密码可以为空
-        db: 0,             //redis 数据库 
-      },
-    ```
-
-4. 如果需要映射插件、全局语音、全局表情等，在 `docker-compose.yaml` 文件中的 `volumes` 部分取消对应项的注释，并在 `工作目录/yunzai` 中新建对应的文件夹用于存放文件，本地的路径需要跟 `docker-compose.yaml` 中冒号前面的路径一致。
-
-:::
 
 ## 运行项目
 
@@ -94,29 +59,16 @@ bash <(curl -sSL http://mtw.so/638Klr)
 
 1. **启动容器**
 
-    在工作目录内运行命令，拉起容器。
+    在工作目录内运行命令，拉起容器，并运行初始化命令。
 
     ```bash
     docker-compose up -d
+    docker exec -it yunzai-bot node app
     ```
 
-2. **进入容器**
+2. **完成验证，重启容器**
 
-    启动完成后进入 yunzai 的容器，默认容器名为 yunzai-bot，若修改后需要修改为对应的容器名。
-
-    ```bash
-    docker exec -it yunzai-bot /bin/sh
-    ```
-
-3. **在容器内部进行登录验证或扫码登录**
-
-    ```bash
-    node app
-    ```
-
-4. **完成验证，重启容器**
-
-    验证完成后，按快捷键 Ctrl+D 退出容器，然后重启容器
+    验证完成后，按快捷键 Ctrl+C 退出，然后重启容器
 
     ```bash
     docker-compose restart

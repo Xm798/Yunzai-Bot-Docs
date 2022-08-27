@@ -6,20 +6,23 @@ order: 2
 
 ::: info
 
-本教程来源于 [Linux 环境搭建 · Le-niao/Yunzai-Bot](https://github.com/Le-niao/Yunzai-Bot/issues/3)
+本教程基于 [Linux 环境搭建 · Le-niao/Yunzai-Bot](https://github.com/Le-niao/Yunzai-Bot/issues/3)
 
 :::
 
-::: tip
+::: info
 
-由于 Yunzai-Bot 原作者 [Le-niao](Le-niao) 不再维护[原仓库](https://github.com/Le-niao/Yunzai-Bot)，因此更换为由 [yoimiya-kokomi](https://github.com/yoimiya-kokomi) 维护的[仓库](https://github.com/yoimiya-kokomi/yunzai-bot)。
+可使用[Linux-Centos/Ubuntu一键安装Yunzai-BotV2&V3图形化系统](https://gitee.com/ningmengchongshui/Yunzai-Bot-Help)
+
 :::
 
 ::: warning
 
 本教程基于 CentOS，使用前请确保拥有一定的 Linux 基础，遇到问题请善用 Google/Bing/百度。
 
-若对 Linux 了解程度不够，请尽量使用一个干净的系统部署。如果您的系统中还有其他服务运行，我们推荐 docker 部署。
+若对 Linux 了解程度不够，请尽量使用一个干净的系统部署。
+
+如果您的系统中还有其他服务运行，我们推荐 docker 部署。
 
 :::
 
@@ -55,14 +58,14 @@ yum -y install redis && redis-server --daemonize yes
 @tab 国内机器
 
 ```bash
-git clone https://gitee.com/yoimiya-kokomi/yunzai-bot
+git clone --depth=1 -b main https://gitee.com/Le-niao/Yunzai-Bot.git
 
 ```
 
 @tab 海外机器
 
 ```bash
-git clone https://github.com/yoimiya-kokomi/yunzai-bot
+git clone --depth=1 -b main https://github.com/Le-niao/Yunzai-Bot.git
 ```
 
 :::
@@ -73,16 +76,16 @@ git clone https://github.com/yoimiya-kokomi/yunzai-bot
 cd Yunzai-Bot
 ```
 
-安装 cnpm
+安装 pnpm
 
 ```bash
-npm install cnpm -g --registry=https://registry.npm.taobao.org
+npm install pnpm -g
 ```
 
-用 cnpm 安装依赖
+安装依赖
 
 ```bash
-cnpm install
+pnpm install -P
 ```
 
 安装 chrome 依赖库
