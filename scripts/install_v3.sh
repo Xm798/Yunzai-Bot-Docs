@@ -85,7 +85,7 @@ else
     GITHUB_RAW_URL="https://jihulab.com/Xm798/Yunzai-Bot-Docs/-/raw/master"
     YUNZAI_RAW_URL="https://gitee.com/Le-niao/Yunzai-Bot/raw/main"
     MIAO_PLUGIN_REPO="https://gitee.com/yoimiya-kokomi/miao-plugin.git"
-    CVS_PLUGIN_REPO="https://github.com/Ctrlcvs/xiaoyao-cvs-plugin.git"
+    CVS_PLUGIN_REPO="https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git"
     PYPLUGIN_REPO="https://gitee.com/realhuhu/py-plugin.git"
     DOCKER_IMG_BASE="swr.cn-south-1.myhuaweicloud.com/sirly/yunzai-bot"
 fi
