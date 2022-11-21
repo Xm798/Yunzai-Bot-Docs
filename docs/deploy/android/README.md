@@ -167,7 +167,8 @@ nodejs -v
 
 ![Img](./assets/README.md/img-20221121113102.png)
 
-我们可以看到node的版本是node12.22.9但是yunzai-bot对node的需求是node16，所以我们需要利用node有一个模块叫n，是专门用来管理node.js的版本。
+我们可以看到node的版本是node12.22.9但是yunzai-bot对node的需求是node16
+所以我们需要利用node有一个模块叫n，是专门用来管理node.js的版本。
 
 安装n模块
 
@@ -180,20 +181,109 @@ npm install -g n
 ```bash
  n stable
 ```
+
 **Ps:** n 后面也可以跟随版本号（用于升级或降级）比如：  
+
 ```bash
 n 16.13.0
 ```
+
 升级完成再次运行
+
 ```bash
 node -v
 ```
+
 查看node版本
 注意：升级完成如果`node -v`没变的话
 退出重启一下Termux重新运行
+
 ```bash
 proot-distro login ubuntu
 ```
-进入Ubuntu
+
+进入 Ubuntu
 然后运行
-`node -v`查看node版本
+`node -v`查看 node 版本
+
+![Img](./assets/README.md/img-20221121114634.png)
+
+我们可以看到 node 的版本已经升级到了 node18.12.1
+
+安装并运行 redis
+
+```bash
+apt -y install redis && redis-server --daemonize yes
+```
+
+克隆项目
+
+```bash
+git clone --depth=1 -b main https://gitee.com/Le-niao/Yunzai-Bot.git
+
+```
+
+安装模块
+
+```bash
+cd Yunzai-Bot
+```
+
+安装 pnpm
+
+```bash
+npm install pnpm -g
+```
+
+安装依赖
+
+```bash
+pnpm install -P
+```
+
+安装 chrome 依赖库
+
+```bash
+yum install pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 -y && yum install libdrm libgbm libxshmfence -y && yum install nss -y && yum update nss -y
+```
+
+安装中文字体
+
+```bash
+yum groupinstall fonts -y
+```
+
+运行
+
+```bash
+node app
+```
+
+按提示输入qq号，密码，cookie
+
+首次登录要过滑块验证，可以用滑块验证助手 <https://maupdate.rainchan.win/txcaptcha.apk>
+
+打开验证助手输入验证链接，手动过了滑块验证后，获得tickek
+
+复制获得的tickek然后粘贴回车，最后再过密保登录
+![Img](./assets/README.md/img-20221121120232.png)
+![Img](./assets/README.md/img-20221121120237.png)
+
+再次运行需要先打开Ubuntu
+
+```bash
+proot-distro login ubuntu
+```
+
+开启redis
+
+```bash
+redis-server --daemonize yes
+```
+
+然后运行
+
+```bash
+cd Yunzai-Bot
+node app
+```
