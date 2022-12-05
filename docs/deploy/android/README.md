@@ -34,12 +34,33 @@ order: 1
 
 ![Img](./assets/README.md/img-20221120172054.png)
 
+## 将手机存储映射到Termux
+
+此步是为了将手机文件管理器默认根目录映射到Termux，方便无root用户后续对机器人以及插件进行备份及管理
+有root用户或无需备份或修改插件隐藏设置及更改功能的可无视此步骤
+
+下载完成后首先运行映射命令
+```bash
+termux-setup-storage
+```
+此时会弹出请求权限对话框，请点击“始终允许”或“仅在使用过程中允许”
+
+![Img](./assets/README.md/img-12050818001.png)
+
+随后查看是否能够看到手机文件管理器根目录中的内容
+```bash
+cd storage/shared
+ls
+```
+若看到显示了文件夹的内容，则表示映射成功
+
+![Img](./assets/README.md/img-12050818002.png)
+
 ## 安装环境
 
 ::: info
 因为 Termux 官方支持安装纯原生安装 Linux 所以之前的方法作废直接采用官方方法安装
 :::
-
 ### 1. Termux 换源
 
 替换镜像源是为了之后安装软件更快，之前都是几十 KB 每秒，替换过后就是几 MB 每秒。
@@ -72,8 +93,6 @@ Linux sudo 命令以系统管理者的身份执行指令，也就是说，经由
 使用权限：在 /etc/sudoers 中有出现的使用者。
 
 一开始是不能用 sudo 命令的，所以需要输入以下命令安装 sudo 软件
-
-```bash
 
 ```bash
 pkg install tsu
@@ -136,7 +155,23 @@ proot-distro login ubuntu
 
 ### 4. Ubuntu 设置
 
-进入Ubuntu后先进行apt 更新
+进入Ubuntu后先在文件管理器根目录建立“yunzai”文件夹并进入此文件夹
+
+```bash
+cd /sdcard
+mkdir yunzai
+cd yunzai
+```
+![Img](./assets/README.md/img-12050818003.png)
+
+此时可见手机根目录多出了一个该文件夹
+
+![Img](./assets/README.md/img-12050818004.png)
+
+后面步骤均在此文件夹进行操作
+（有root用户及无需备份及管理机器人目录的可不进行进入ubuntu至此的这两步操作）
+
+随后进行apt更新
 
 ``` bash
 apt update
@@ -155,7 +190,7 @@ apt install curl
 安装node.js
 
 ```bash
-sudo apt install nodejs npm
+apt install nodejs npm
 ```
 
 上面的命令将会安装一系列包，包括编译和安装从 npm 来的本地扩展。
