@@ -11,7 +11,7 @@ order: 1
 :::
 
 ::: warning
-本教程基于 Ubuntu，使用前请确保拥有一定的 Linux 基础，遇到问题请善用 Google/Bing/百度。
+本教程基于 Debian，使用前请确保拥有一定的 Linux 基础，遇到问题请善用 Google/Bing/百度。
 若对 Linux 了解程度不够，请尽量使用一个干净的系统部署。
 
 :::
@@ -34,27 +34,7 @@ order: 1
 
 ![Img](./assets/README.md/img-20221120172054.png)
 
-## 将手机存储映射到Termux
 
-此步是为了将手机文件管理器默认根目录映射到Termux，方便无root用户后续对机器人以及插件进行备份及管理
-有root用户或无需备份或修改插件隐藏设置及更改功能的可无视此步骤
-
-下载完成后首先运行映射命令
-```bash
-termux-setup-storage
-```
-此时会弹出请求权限对话框，请点击“始终允许”或“仅在使用过程中允许”
-
-![Img](./assets/README.md/img-12050818001.png)
-
-随后查看是否能够看到手机文件管理器根目录中的内容
-```bash
-cd storage/shared
-ls
-```
-若看到显示了文件夹的内容，则表示映射成功
-
-![Img](./assets/README.md/img-12050818002.png)
 
 ## 安装环境
 
@@ -86,23 +66,10 @@ pkg update && pkg upgrade -y
 
 ![Img](./assets/README.md/img-20221121102748.png)
 
-### 2. 安装 sudo 软件
-
-Linux sudo 命令以系统管理者的身份执行指令，也就是说，经由 sudo 所执行的指令就好像是 root 亲自执行。
-
-使用权限：在 /etc/sudoers 中有出现的使用者。
-
-一开始是不能用 sudo 命令的，所以需要输入以下命令安装 sudo 软件
-
-```bash
-pkg install tsu
-```
-
-![Img](./assets/README.md/img-20221121103341.png)
 
 ### 3. 安装 Linux 环境
 
-**上方的换源,安装基础操作做完就可以开始正式安装Linux了(本教程以Ubuntu为主)**
+**上方的换源,安装基础操作做完就可以开始正式安装Linux了(本教程以debian为主)**
 
 1. 安装基础组件proot-distro
 
@@ -131,47 +98,31 @@ proot-distro list
 
 ![Img](./assets/README.md/img-20221121104808.png)
 
-3. 安装Ubuntu
+3. 安装Debian
 
 输入:
 
 ```bash
-proot-distro install ubuntu
+proot-distro install debian
 ```
 
-4. 安装完成后，进入 Linux(Ubuntu)环境的指令为：
+4. 安装完成后，进入 Linux(Debian)环境的指令为：
 
 ```bash
-proot-distro login ubuntu
+proot-distro login debian
 ```
 
-出现root@localhost:~# 代表已进入Ubuntu环境
+出现root@localhost:~# 代表已进入Debian环境
 
 ![Img](./assets/README.md/img-20221121110118.jpg)
 
-在后面输入 exit 回车 即可退出Ununtu环境。
+在后面输入 exit 回车 即可退出Debian环境。
 
 ![Img](./assets/README.md/img-20221121110204.png)
 
-### 4. Ubuntu 设置
+### 3. Debian 设置
 
-进入Ubuntu后先在文件管理器根目录建立“yunzai”文件夹并进入此文件夹
-
-```bash
-cd /sdcard
-mkdir yunzai
-cd yunzai
-```
-![Img](./assets/README.md/img-12050818003.png)
-
-此时可见手机根目录多出了一个该文件夹
-
-![Img](./assets/README.md/img-12050818004.png)
-
-后面步骤均在此文件夹进行操作
-（有root用户及无需备份及管理机器人目录的可不进行进入ubuntu至此的这两步操作）
-
-随后进行apt更新
+进入debian后首先进行apt更新
 
 ``` bash
 apt update
@@ -179,31 +130,23 @@ apt update
 
 ![Img](./assets/README.md/img-20221120195145.png)
 
-安装 curl
+由于安装包管理器中的nodejs再通过n升级会导致报错，所以我们这里直接安装nodejs18（最新稳定版
 
 ``` bash
 apt install curl
+apt install apt-transport-https curl ca-certificates software-properties-common
+curl -sL https://deb.nodesource.com/setup_18.x | bash
+apt-get update && apt-get install -y nodejs
 ```
 
-![Img](./assets/README.md/img-20221120195231.png)
+然后运行
+`node -v`查看 node 版本
 
-安装node.js
+![Img](./assets/README.md/img-20221121114634.png)
 
-```bash
-apt install nodejs npm
-```
+可以看到已经安装了18版本的nodejs
 
-上面的命令将会安装一系列包，包括编译和安装从 npm 来的本地扩展。
-安装完成后运行下面的命令，验证安装过程：
-
-```bash
-nodejs -v
-```
-
-![Img](./assets/README.md/img-20221121113102.png)
-
-我们可以看到node的版本是node12.22.9但是yunzai-bot对node的需求是node16
-所以我们需要利用node有一个模块叫n，是专门用来管理node.js的版本。
+此外还可以安装n进行管理，经过上述步骤后使用n管理node版本则不会导致报错
 
 安装n模块
 
@@ -211,11 +154,6 @@ nodejs -v
 npm install -g n
 ```
 
-升级到最新稳定版
-
-```bash
- n stable
-```
 
 **Ps:** n 后面也可以跟随版本号（用于升级或降级）比如：  
 
@@ -230,20 +168,21 @@ node -v
 ```
 
 查看node版本
-注意：升级完成如果`node -v`没变的话
+注意：修改完成如果`node -v`没变的话
 退出重启一下Termux重新运行
 
 ```bash
-proot-distro login ubuntu
+proot-distro login debian
 ```
 
-进入 Ubuntu
-然后运行
-`node -v`查看 node 版本
+进入 Debian
 
-![Img](./assets/README.md/img-20221121114634.png)
+首先安装git、Chromium及其运依赖
 
-我们可以看到 node 的版本已经升级到了 node18.12.1
+```bash
+apt-get install -y chromium
+apt-get install -y git
+```
 
 安装并运行 redis
 
@@ -276,17 +215,6 @@ npm install pnpm -g
 pnpm install -P
 ```
 
-安装 chrome 依赖库
-
-```bash
-yum install pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 -y && yum install libdrm libgbm libxshmfence -y && yum install nss -y && yum update nss -y
-```
-
-安装中文字体
-
-```bash
-yum groupinstall fonts -y
-```
 
 运行
 
@@ -304,10 +232,10 @@ node app
 ![Img](./assets/README.md/img-20221121120232.png)
 ![Img](./assets/README.md/img-20221121120237.png)
 
-再次运行需要先打开Ubuntu
+## 再次运行需要先打开Debian
 
 ```bash
-proot-distro login ubuntu
+proot-distro login debian
 ```
 
 开启redis
