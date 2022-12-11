@@ -11,7 +11,7 @@ order: 1
 :::
 
 ::: warning
-本教程基于 Ubuntu，使用前请确保拥有一定的 Linux 基础，遇到问题请善用 Google/Bing/百度。
+本教程基于 Debian，使用前请确保拥有一定的 Linux 基础，遇到问题请善用 Google/Bing/百度。
 若对 Linux 了解程度不够，请尽量使用一个干净的系统部署。
 
 :::
@@ -112,15 +112,15 @@ proot-distro install debian
 proot-distro login debian
 ```
 
-出现root@localhost:~# 代表已进入Ubuntu环境
+出现root@localhost:~# 代表已进入Debian环境
 
 ![Img](./assets/README.md/img-20221121110118.jpg)
 
-在后面输入 exit 回车 即可退出Ununtu环境。
+在后面输入 exit 回车 即可退出Debian环境。
 
 ![Img](./assets/README.md/img-20221121110204.png)
 
-### 3. Ubuntu 设置
+### 3. Debian 设置
 
 进入debian后首先进行apt更新
 
@@ -172,7 +172,7 @@ node -v
 退出重启一下Termux重新运行
 
 ```bash
-proot-distro login ubuntu
+proot-distro login debian
 ```
 
 进入 Debian
