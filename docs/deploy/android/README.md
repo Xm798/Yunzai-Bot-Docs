@@ -235,7 +235,7 @@ node app
 ## 再次运行需要先打开Debian
 
 ```bash
-proot-distro login Debian
+proot-distro login debian
 ```
 
 开启redis
