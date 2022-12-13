@@ -222,13 +222,12 @@ pnpm install -P
 vim ./config/config/bot.yaml
 ```
 此时会进入编辑界面，按“i”进入编辑模式
-![Img](./assets/README.md/
-Screenshot_2022-12-14-03-47-21-256_com.termux.jpg)
+
+![Img](./assets/README.md/img-22121214000414001.png)
 
 在chromium_path：下面一行添加/usr/bin/chromium
 然后按ESC，输入:wq并回车保存并退出
-![Img](./assets/README.md/
-Screenshot_2022-12-14-03-47-21-256_com.termux.jpg)
+![Img](./assets/README.md/img-22121214000414002.png)
 
 
 以上，机器人所有基本工作就都已经完成了，然后我们可以使用以下命令开始运行了
@@ -238,11 +237,13 @@ node app
 
 按提示输入qq号，密码，cookie
 
-首次登录要过滑块验证，可以用滑块验证助手 <https://maupdate.rainchan.win/txcaptcha.apk>
+首次登录要过滑块验证，可以用滑块验证助手
+<https://maupdate.rainchan.win/txcaptcha.apk>
 
 打开验证助手输入验证链接，手动过了滑块验证后，获得tickek
 
 复制获得的tickek然后粘贴回车，最后再过密保登录
+
 ![Img](./assets/README.md/img-20221121120232.png)
 ![Img](./assets/README.md/img-20221121120237.png)
 
