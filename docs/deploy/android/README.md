@@ -125,7 +125,7 @@ proot-distro login debian
 进入debian后首先进行apt更新
 
 ``` bash
-apt update
+apt update&&apt upgrade -y
 ```
 
 ![Img](./assets/README.md/img-20221120195145.png)
@@ -133,8 +133,7 @@ apt update
 由于安装包管理器中的nodejs再通过n升级会导致报错，所以我们这里直接安装nodejs18（最新稳定版
 
 ``` bash
-apt install curl
-apt install apt-transport-https curl ca-certificates software-properties-common
+apt install -y apt-transport-https curl ca-certificates software-properties-common vim
 curl -sL https://deb.nodesource.com/setup_18.x | bash
 apt-get update && apt-get install -y nodejs
 ```
@@ -177,10 +176,11 @@ proot-distro login debian
 
 进入 Debian
 
-首先安装git、Chromium及其运依赖
+首先安装git、Chromium及其依赖以及中文字体
 
 ```bash
-apt-get install -y chromium
+apt-get install -y chromium chromium-driver chromium-l10n
+apt-get install -y --force-yes --no-install-recommends fonts-wqy-microhei
 apt-get install -y git
 ```
 
@@ -215,9 +215,18 @@ npm install pnpm -g
 pnpm install -P
 ```
 
+此时运行的话，一部分用户在拉取帮助的时候会出现Chromium报错，所以我们要手动指定Chromium的位置
 
-运行
+编辑文件./config/config/bot.yaml
+```bash
+vim ./config/config/bot.yaml
+```
+此时会进入编辑界面，按“i”进入编辑模式
+在chromium_path：下面一行添加/usr/bin/chromium
 
+然后按ESC，输入:wq保存并退出
+
+以上，机器人所有基本工作就都已经完成了，然后我们运行
 ```bash
 node app
 ```
