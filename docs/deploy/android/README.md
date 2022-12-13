@@ -215,18 +215,23 @@ npm install pnpm -g
 pnpm install -P
 ```
 
-此时运行的话，一部分用户在拉取帮助的时候会出现Chromium报错，所以我们要手动指定Chromium的位置
+此时运行的话，一部分用户在拉取帮助的时候会出现Chromium报错导致无法生成图片，所以我们要手动指定Chromium的位置
 
 编辑文件./config/config/bot.yaml
 ```bash
 vim ./config/config/bot.yaml
 ```
 此时会进入编辑界面，按“i”进入编辑模式
+![Img](./assets/README.md/
+Screenshot_2022-12-14-03-47-21-256_com.termux.jpg)
+
 在chromium_path：下面一行添加/usr/bin/chromium
+然后按ESC，输入:wq并回车保存并退出
+![Img](./assets/README.md/
+Screenshot_2022-12-14-03-47-21-256_com.termux.jpg)
 
-然后按ESC，输入:wq保存并退出
 
-以上，机器人所有基本工作就都已经完成了，然后我们运行
+以上，机器人所有基本工作就都已经完成了，然后我们可以使用以下命令开始运行了
 ```bash
 node app
 ```
