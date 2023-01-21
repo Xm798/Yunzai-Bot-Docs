@@ -80,3 +80,6 @@ order: 1
           - ./yunzai/plugins/xiaoyao-cvs-plugin:/app/Yunzai-Bot/plugins/xiaoyao-cvs-plugin    # 图鉴插件
               # 省略后续配置...
     ```
+3.**使用脚本重新加载配置**
+    因为docker在工作目录下运行后,会运行初始化命令，所以更改文件后需重新加载文件
+    ```docker-compose up -d ```
