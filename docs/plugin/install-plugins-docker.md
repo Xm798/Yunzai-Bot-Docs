@@ -82,7 +82,8 @@ order: 1
     ```
 3.**使用脚本重新加载配置**
 
-    如果你的Docker已经运行，并且在创建容器后更改了服务的配置(如 `docker-compose.yaml` )，需要用以下代码重新部署容器
+    如果你的Docker已经运行，并且在创建容器后更改了如 `docker-compose.yaml`的配置,需要用以下代码重新部署容器
+
     ```bash
     docker-compose up -d
     ```
