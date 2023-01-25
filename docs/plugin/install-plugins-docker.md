@@ -84,4 +84,6 @@ order: 1
 
     如果你的Docker已经运行，并且在创建容器后更改了服务的配置(如 `docker-compose.yaml` )，需要用以下代码重新部署容器
     
-    ```docker-compose up -d ```
+    ```bash
+    docker-compose up -d
+    ```
