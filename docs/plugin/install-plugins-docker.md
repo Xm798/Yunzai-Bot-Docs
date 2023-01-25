@@ -78,11 +78,15 @@ order: 1
           - ./yunzai/plugins/miao-plugin:/app/Yunzai-Bot/plugins/miao-plugin                  # 喵喵插件
           - ./yunzai/plugins/py-plugin:/app/Yunzai-Bot/plugins/py-plugin                      # 新py插件
           - ./yunzai/plugins/xiaoyao-cvs-plugin:/app/Yunzai-Bot/plugins/xiaoyao-cvs-plugin    # 图鉴插件
+        ports:
+          - 50831:50831                                                                       # 锅巴插件映射端口(可删除)
               # 省略后续配置...
     ```
+    
 3.**使用脚本重新加载配置**
 
-    如果你的Docker已经运行，并且在创建容器后更改了服务的配置(如 `docker-compose.yaml` )，需要用以下代码重新部署容器
+    如果你的Docker已经运行，并且在创建容器后更改了如 `docker-compose.yaml`等配置,需要用以下代码重新部署容器
+
     ```bash
     docker-compose up -d
     ```
