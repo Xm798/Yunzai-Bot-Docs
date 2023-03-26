@@ -56,7 +56,6 @@ yum -y install redis && redis-server --daemonize yes
 
 ```bash
 git clone https://gitee.com/yoimiya-kokomi/yunzai-bot
-
 ```
 
 @tab 海外机器
